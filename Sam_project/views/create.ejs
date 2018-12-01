@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert new restaurant</title>
+</head>
+<body>
+<h1>Insert new restaurant</h1>
+<form id='create' method='POST' enctype="multipart/form-data" action='/create'>
+    <input type="hidden" name="creator" value="<%= creator %>"><br>
+    Name: <input type="text" name="name" required><br>
+    Borough: <input type="text" name="borough"><br>
+    Cuisine: <input type="text" name="cuisine"><br>
+    Address:<br>
+    <input type="text" name="building" placeholder="Building">,
+    <input type="text" name="street" placeholder="Street">,
+    <input type="text" name="zipcode" placeholder="Zipcode"><br>
+    Coordinates: <input type="text" name="lat" placeholder="Latitude" value="22.316628">,<input type="text" name="lng" placeholder="Longitude" value="114.179874"><br>
+    Photo: <input type="file" name="filetoupload"><br>
+    <input type="submit" value="Submit">
+    <button onclick="goBack()">Go Back</button>
+</form>
+<script>
+    function goBack() {window.history.back();}
+</script>
+
+</body>
+</html>

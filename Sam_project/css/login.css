@@ -1,0 +1,43 @@
+.bodyContainer{
+    margin: 100px auto;
+    width: 300px;
+    font-family: Helvetica;
+    padding: 25px;
+    background-color: #FBFBFB;
+    border-radius: 25px;
+}
+
+#input_password, #input_username{
+    float: right;
+    width: 200px;
+    height: 30px;
+}
+
+#button_submit, #button_register{
+    background-color: steelblue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
+
+#button_submit:hover, #button_register:hover{
+    background-color: deepskyblue;
+}
+
+.textInputContainer{
+    height: 30px;
+    margin-bottom: 16px;
+}
+.textInputContainer label{
+    height: 30px;
+    float: left;
+    margin-top: 5px;
+    font-size: 18px;
+}
+.headerContainer h1{
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+<html>
+    <title><%= restaurant.name %></title>
+    <body>
+        <h1>Edit <%= restaurant.name %></h1>
+        <form id='details' method='POST' action='/edit'>
+            <input type="hidden" name="_id" value="<%= restaurant._id %>">
+            Name: <input type="text" name="name" value="<%= restaurant.name %>"><br>
+            Borough: <input type="text" name="borough" value="<%= restaurant.borough %>"><br>
+            Cuisine: <input type="text" name="cuisine" value="<%= restaurant.cuisine %>"><br>
+            Address:<br>
+            <input type="text" name="building" value="<%= restaurant.building %>">,
+            <input type="text" name="street" value="<%= restaurant.street %>">,
+            <input type="text" name="zipcode" value="<%= restaurant.zipcode %>">,<br>
+            Coordinates: <input type="text" name="lat" placeholder="Latitude" value="<%= restaurant.coord[0] %>">,<input type="text" name="lng" placeholder="Longitude" value="<%= restaurant.coord[1] %>"><br>
+        </form>
+        <script>
+            function goBack() {window.history.back();}
+        </script>
+        <button type="submit" form="details" value="Submit">Submit</button>
+        <button onclick="goBack()">Go Back</button>
+    </body>
+</html>

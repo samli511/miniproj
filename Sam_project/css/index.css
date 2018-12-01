@@ -1,0 +1,20 @@
+.headerContainer{
+    width:100%;
+}
+.navbar{
+    width:100%;
+    float: left;
+}
+.navbar .empty{
+    width:10%;
+    float: left;
+}
+.navbar_button{
+    width:20%;
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    font-family: Helvetica;
+    color:white;
+    background-color:#9999FF;
+}

@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant App - Login</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+    <div class="bodyContainer">
+        <div class="headerContainer">
+            <h1>Log-in</h1>
+        </div>
+        <div class="loginFormContainer">
+            <form action="/login" method="post">
+                <div class="textInputContainer">
+                    <label for="input_username">User ID</label>
+                    <input type="text" id="input_username" name="username">
+                </div>
+                <div class="textInputContainer">
+                    <label for="input_password">Password</label>
+                    <input type="password" id="input_password" name="password">
+                </div>
+                <input type="submit" id="button_submit" value="Login">
+            </form>
+            <div class="registerButtonContainer">
+                <form action="/register" method="get">
+                    <input type="submit" id="button_register" value="Register" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

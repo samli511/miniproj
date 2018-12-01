@@ -1,0 +1,21 @@
+{
+    "name": "11666000_COMPS381F_MINI_PROJECT",
+    "description": "Restaurants",
+    "author": "Sam",
+    "version": "0.0.1",
+    "dependencies": {
+	     "mongodb":"^2.2.3",
+        "express": "*",
+        "ejs": "*",
+        "body-parser": "*",
+        "cookie-session": "*",
+        "passport-local": "1.0.0",
+        "passport": "0.4.0",
+        "connect-ensure-login": "*",
+	      "formidable":"*"
+    },
+    "engine": "node >= 0.10.0",
+    "scripts": {
+        "start": "node server"
+    }
+}

@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <script>
+            function goBack() {
+                if( <%= backToIndex %> == true){
+                    window.location="/";
+                }else{
+                    window.history.back();
+                }
+            }
+            var myLatLng = {
+                lat: <%= restaurant.address.coord[0]%> ,
+                lng: <%=restaurant.address.coord[1]%>
+            };
+            if(myLatLng['lat']!==undefined&&myLatLng['lat']!==null&&myLatLng['lng']!==undefined&&myLatLng['lng']!==null){
+                var loadMap = function () {
+                    var map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 12,
+                        center: myLatLng
+                    });
+                    var map = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: '<%=restaurant.name%>'
+                    });
+                };
+                window.onload = loadMap;
+            }
+        </script>
+        <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdP_g1RnbsYSnQTFUD-P6RR1j2RKgDRfM&callback=initMap"-->
+                <!--type="text/javascript"></script>-->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdP_g1RnbsYSnQTFUD-P6RR1j2RKgDRfM"
+                type="text/javascript"></script>
+        <title><%= restaurant.name %></title>
+    </head>
+
+    <body>
+    <h1>Display Details of <%= restaurant.name %></h1>
+    <a href="/">Index</a><br>
+        <form id='details' method='GET' action='/edit'>
+            <input type="hidden" name="_id" value="<%= restaurant._id %>">
+            <input type="hidden" name="creator" value="<%= restaurant.creator %>">
+            <input type="hidden" name="lat" value="<%= restaurant.address.coord[0] %>">
+            <input type="hidden" name="lng" value="<%= restaurant.address.coord[1] %>">
+            Name: <input type="text" name="name" value="<%= restaurant.name %>" readonly><br>
+            <% if(restaurant.borough!==undefined&&restaurant.borough!==null){ %>Borough: <input type="text" name="borough" value="<%= restaurant.borough %>" readonly><br><% } %>
+            <% if(restaurant.cuisine!==undefined&&restaurant.cuisine!==null){ %>Cuisine: <input type="text" name="cuisine" value="<%= restaurant.cuisine %>" readonly><br><% } %>
+            <% if(restaurant.address.building !== undefined && restaurant.address.street !== undefined && restaurant.address.zipcode !== undefined){ %>
+                Address:<br>
+                <% if(restaurant.address.building!==undefined&&restaurant.address.building!==null){ %><input type="text" name="building" value="<%= restaurant.address.building %>" readonly><% } %>
+                <% if(restaurant.address.street!==undefined&&restaurant.address.street!==null){ %><input type="text" name="street" value="<%= restaurant.address.street %>" readonly><% } %>
+                <% if(restaurant.address.zipcode!==undefined&&restaurant.address.zipcode!==null){ %><input type="text" name="zipcode" value="<%= restaurant.address.zipcode %>" readonly><br><% } %>
+            <% } %>
+        </form>
+        <% if(restaurant.mimetype!==undefined&&restaurant.mimetype!==null&&restaurant.image!==undefined&&restaurant.image!==null){%>
+            <img src="data: <%= restaurant.mimetype %>;base64,<%= restaurant.image %>" width="600px" alt="base64 test">
+        <% } %>
+        <div id="map" style="width:500px;height:500px;"></div>
+        <!--rating form-->
+        <div>
+        <% if(!rated){ %>
+            <form id='rate' method='POST' action='/rate'>
+                <input type="hidden" name="_id" value="<%= restaurant._id %>">
+                <select name="score" style="float:left;">
+                    <% for(var i=1;i<=10;i++){ %>
+                    <option value="<%=i %>"><%=i %></option>
+                    <% } %>
+                </select>
+            </form>
+            <button type="submit" form="rate"  value="Rate now" style="float:left;">Rate now</button><br>
+            <div class="clear"></div>
+        <% }else{ %>
+            You gave this restaurant <%= score %> marks.
+        <% }%>
+        </div>
+
+        <% if(restaurant.creator==user){ %>
+            <form id='delete' method='POST' action='/delete'>
+                <input type="hidden" name="_id" value="<%= restaurant._id %>">
+            </form>
+            <button type="submit" form="details" value="Edit">Edit</button>
+            <button type="submit" form="delete"  value="Delete">Delete</button><br>
+        <% } %>
+        <button onclick="goBack()">Go Back</button>
+    </body>
+</html>

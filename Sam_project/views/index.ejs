@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Restaurant App - Index</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+	</head>
+	<body>
+		<div class="headerContainer">
+			<div class="navbar">
+				<div class="empty"> </div>
+				<a href="/"><div class="navbar_button">Home</div></a>
+				<a href="/logout"><div class="navbar_button">Logout</div></a>
+				<a href="/create"><div class="navbar_button">Add restaurant</div></a>
+				<a href="/filtering"><div class="navbar_button">Search restaurant</div></a>
+				<div class="empty"> </div>
+			</div>
+			<div class="clear"></div>
+			<div class="header_text"><H1>Restaurants</H1></div>
+		</div>
+		<div class="bodyContainer">
+			<H2>Showing <%= restaurants.length %> document(s)</H2>
+			<ol>
+                <%
+				for (var i in restaurants) { %>
+				<li><a href="/display?_id=<%= restaurants[i]._id %>"> <%= restaurants[i].name %></a></li>
+                <% } %>
+			</ol>
+		</div>
+
+	</body>
+</html>

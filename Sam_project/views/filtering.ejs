@@ -1,0 +1,19 @@
+<html>
+<title>Filtering</title>
+<body>
+<h1>Filtering restaurants</h1>
+<form id='filtering' method='POST' action='/filtering'>
+    Name: <input type="text" name="name"><br>
+    Borough: <input type="text" name="borough"><br>
+    Cuisine: <input type="text" name="cuisine"><br>
+    Address:<br>
+    <input type="text" name="building">,
+    <input type="text" name="street"><br>
+    <input type="submit" value="Submit">
+    <button onclick="goBack()">Go Back</button>
+</form>
+<script>
+    function goBack() {window.history.back();}
+</script>
+</body>
+</html>
