@@ -247,7 +247,7 @@ app.post('/create',function(req,res) {
         dataArray['coord'] = [parseFloat(fields.lat),parseFloat(fields.lng)];
         var filename = files.filetoupload.path;
         var mimetype = files.filetoupload.type;
-        if(files.filetoupload!==undefined){
+        if(files.filetoupload!==undefined && filename.substring(filename.lastIndexOf('.') +1)=="pdf"){
             fs.readFile(filename, function(err,data) {
                 dataArray['mimetype'] = mimetype;
                 dataArray['image'] = new Buffer(data).toString('base64');
@@ -386,7 +386,7 @@ function userRegister(db,userid,password,callback) {
                     userid: userid,
                     password: password
                 }, function(err, result) {
-                    assert.equal(err, null);
+                    assert.equal(err,null);
                     callback(true);
                 }
             )
